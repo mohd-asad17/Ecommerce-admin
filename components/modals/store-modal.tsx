@@ -31,18 +31,18 @@ export const StoreModal = () => {
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
 
-        try{
+        try {
             setLoading(true);
 
             const response = await axios.post('/api/stores', values);
             window.location.assign(`${response.data.id}`);
-        } catch(e){
+        } catch (e) {
             toast.error("Something went wrong");
             console.log(e);
-        } finally{
-            setTimeout(()=>{
+        } finally {
+            setTimeout(() => {
                 setLoading(false);
-            },1000);
+            }, 1000);
         }
     }
 
@@ -67,10 +67,10 @@ export const StoreModal = () => {
                                 </FormItem>
                             )} />
 
-                            <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-                                <Button disabled={loading} variant={"outline"} onClick={storeModal.onClose}>Cancel</Button>
-                                <Button disabled={loading} type="submit">Continue</Button>
-                            </div>
+                        <div className="pt-6 space-x-2 flex items-center justify-end w-full">
+                            <Button disabled={loading} variant={"outline"} onClick={storeModal.onClose}>Cancel</Button>
+                            <Button disabled={loading} type="submit">Continue</Button>
+                        </div>
                     </form>
                 </Form>
             </div>

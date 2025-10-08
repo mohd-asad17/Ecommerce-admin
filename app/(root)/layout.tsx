@@ -4,28 +4,27 @@ import { redirect } from "next/navigation";
 
 
 export default async function SetupPageLayout(
-    {children}: {
+    { children }: {
         children: React.ReactNode
-}) {
+    }) {
     const { userId } = await auth();
 
-    if(!userId){
+    if (!userId) {
         redirect('/sign-in');
     }
-
     const store = await prismadb.store.findFirst({
-        where : {
+        where: {
             userId,
         }
     })
 
-    if(store){
+    if (store) {
         redirect(`/${store.id}`);
     }
 
     return (
         <>
-        {children}
+            {children}
         </>
     )
- }
+}

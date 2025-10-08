@@ -8,10 +8,10 @@ import prismadb from "@/lib/prismadb";
 
 
 
-export const Navbar =  async () => {
+export const Navbar = async () => {
     const { userId } = await auth();
 
-    if(!userId){
+    if (!userId) {
         redirect('/sign-in');
     }
 
@@ -24,7 +24,7 @@ export const Navbar =  async () => {
     return <div className="border-b">
         <div className="flex h-14 items-center px-4">
             <StoreSwitcher items={stores} />
-            <MainNavbar className="mx-6"/>
+            <MainNavbar className="mx-6" />
             <div className="ml-auto flex items-center space-x-4">
                 <UserButton />
             </div>

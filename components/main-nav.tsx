@@ -11,7 +11,18 @@ export function MainNavbar({
     const pathName = usePathname();
     const params = useParams();
 
-    const routes = [{
+    const routes = [
+        {
+        href: `/${params.storeId}/overview`,
+        label: "Overview",
+        active: pathName === `/${params.storeId}/overview`
+    },
+    {
+        href: `/${params.storeId}/billboards`,
+        label: "Billboards",
+        active: pathName === `/${params.storeId}/billboard`
+    },
+    {
         href: `/${params.storeId}/settings`,
         label: "Settings",
         active: pathName === `/${params.storeId}/settings`
