@@ -8,7 +8,7 @@ import Image from "next/image";
 
 interface ImageUploadProps {
     disabled?: boolean;
-    onChange: (value: string) => void;
+    onChange: (value: string[]) => void;
     onRemove: (value: string) => void;
     value: string[]
 }
@@ -25,7 +25,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     }, []);
 
     const onSuccess = (result: any) => {
-        onChange(result.info.secure_url);
+        onChange([...value,result.info.secure_url]);
     }
 
     if (!isMounted) {
